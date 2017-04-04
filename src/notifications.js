@@ -26,9 +26,9 @@ class Notifications extends React.Component {
     notifications.forEach(notification => {
       this.system().addNotification({
         ...notification,
-        onRemove: () => {
+        onRemove: (notification) => {
           this.context.store.dispatch(actions.hide(notification.uid));
-          notification.onRemove && notification.onRemove();
+          notification.onRemove && notification.onRemove(notification);
         }
       });
     });
